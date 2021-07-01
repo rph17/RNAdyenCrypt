@@ -1,16 +1,21 @@
 
 {
   "name": "react-native-adyen-crypt",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "React Native Adyen Crypt",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "adyen",
     "react-native"
   ],
-  "author": "",
-  "license": "",
-  "peerDependencies": {}
+  "author": "Raphael Novaes",
+  "license": "MIT",
+  "peerDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rph17/RNAdyenCrypt"
+  }
 }
