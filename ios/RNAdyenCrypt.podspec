@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = ""
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "novaesrph@gmail.com" }
+  s.author             = { "author" => "rph7@live.com" }
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/author/RNAdyenCrypt.git", :tag => "master" }
   s.source_files  = "RNAdyenCrypt/**/*.{h,m}"
