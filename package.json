@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-adyen-crypt",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React Native Adyen Crypt",
   "main": "index.js",
   "scripts": {

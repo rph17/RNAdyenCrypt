@@ -10,7 +10,7 @@ import Adyen
 import Foundation
 import SafariServices
 
-@objc(AdyenDropInPayment)
+@objc(AdyenCryptCard)
 class AdyenCryptCard: RCTEventEmitter {
   func dispatch(_ closure: @escaping () -> Void) {
     if Thread.isMainThread {
