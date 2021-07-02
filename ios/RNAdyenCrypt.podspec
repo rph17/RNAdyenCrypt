@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNAdyenCrypt"
-  s.version      = "1.0.0"
+  s.version      = "1.0.3"
   s.summary      = "RNAdyenCrypt"
   s.description  = <<-DESC
                     RNAdyenCrypt
@@ -14,6 +14,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'React'
-  s.dependency "Adyen/Card"
-  s.dependency "Adyen/Encryption"
+  s.dependency "Adyen"
 end
