@@ -1,6 +1,11 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="br.com.rnadyencrypt">
+    <application>
+        <service
+            android:name=".AdyenCryptCard"
+            />
+    </application>
 
 </manifest>
   

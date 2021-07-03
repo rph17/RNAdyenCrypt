@@ -13,7 +13,10 @@ import com.facebook.react.bridge.JavaScriptModule;
 public class RNAdyenCryptPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNAdyenCryptModule(reactContext));
+      // return Arrays.<NativeModule>asList(new RNAdyenCryptModule(reactContext));
+      return Arrays.asList(new NativeModule[]{
+                new AdyenCryptCard(reactContext),
+        });
     }
 
     // Deprecated from RN 0.47
