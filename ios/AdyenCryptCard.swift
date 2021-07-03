@@ -12,26 +12,7 @@ import SafariServices
 
 @objc(AdyenCryptCard)
 class AdyenCryptCard: RCTEventEmitter {
-  func dispatch(_ closure: @escaping () -> Void) {
-    if Thread.isMainThread {
-      closure()
-    } else {
-      DispatchQueue.main.async(execute: closure)
-    }
-  }
-
-  func requiresMainQueueSetup() -> Bool {
-    return true
-  }
-  var customCardComponent:CustomCardComponent?
-  var dropInComponent: DropInComponent?
   var cardComponent: CardComponent?
-  var threeDS2Component: ThreeDS2Component?
-  var publicKey: String?
-  var env: Environment?
-  var isDropIn:Bool?
-  var envName: String?
-  var configuration: DropInComponent.PaymentMethodsConfiguration?
   override func supportedEvents() -> [String]! {
     return [
       "onPaymentFail",
@@ -40,34 +21,39 @@ class AdyenCryptCard: RCTEventEmitter {
     ]
   }
 }
-
-extension AdyenCryptCard: DropInComponentDelegate {
-  @objc func configPayment(_ publicKey: String, env: String) {
-    configuration = DropInComponent.PaymentMethodsConfiguration()
-    configuration?.card.publicKey = publicKey
-    self.publicKey = publicKey
-    configuration?.card.showsStorePaymentMethodField = false
-    envName = env
-    switch env {
-    case "live":
-      self.env = .live
-    default:
-      self.env = .test
+//CardComponentDelegate
+extension AdyenCryptCard: CardComponentDelegate {
+    func didChangeBIN(_ value: String, component: CardComponent) {
+        
     }
-  }
-   @objc func encryptCard(_ cardNumber: String,expiryMonth:Int, expiryYear:Int,securityCode:String,resolver resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock)  {
+    
+    func didChangeCardType(_ value: [CardType]?, component: CardComponent) {
+        
+    }
+
+   @objc func encryptCard(_ cardNumber: String,
+                          expiryMonth:String,
+                          expiryYear:String,
+                          securityCode:String,
+                          publicKey: String,
+                          resolver resolve: RCTPromiseResolveBlock,
+                          rejecter reject: RCTPromiseRejectBlock)  {
        let card = CardEncryptor.Card(number: cardNumber,
                                      securityCode: securityCode,
-                                     expiryMonth:  String(expiryMonth),
-                                     expiryYear: "20" + String(expiryYear))
-     let encryptedCard = CardEncryptor.encryptedCard(for: card, publicKey: self.publicKey!)
-     
-     let resultMap:Dictionary? = [
-       "encryptedNumber":encryptedCard.number,
-       "encryptedExpiryMonth":encryptedCard.expiryMonth,
-       "encryptedExpiryYear":encryptedCard.expiryYear,
-       "encryptedSecurityCode":encryptedCard.securityCode,
-     ]
-     resolve(resultMap)
+                                     expiryMonth:  expiryMonth,
+                                     expiryYear: expiryYear)
+    do {
+        let encryptedCard = try CardEncryptor.encryptedCard(for: card, publicKey: publicKey)
+         
+         let resultMap:Dictionary? = [
+           "encryptedCardNumber":encryptedCard.number,
+           "encryptedExpiryMonth":encryptedCard.expiryMonth,
+           "encryptedExpiryYear":encryptedCard.expiryYear,
+           "encryptedSecurityCode":encryptedCard.securityCode,
+         ]
+         resolve(resultMap)
+    } catch _ {
+        print("Not me error")
+    }
    }
 }

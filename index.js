@@ -1,16 +1,15 @@
 
 import { NativeModules } from 'react-native';
 
-const { RNAdyenCrypt } = NativeModules;
+const { AdyenCryptCard } = NativeModules;
 
 export const AdyenCrypto = (card, publicKey) => {
-    const {holderName, number, cvc, expiryMonth, expiryYear} = card
-    return RNAdyenCrypt.encrypt(
-        holderName,
+    const {number, cvc, expiryMonth, expiryYear} = card
+    return AdyenCryptCard.encryptCard(
         number,
-        cvc,
         expiryMonth,
         expiryYear,
+        cvc,
         publicKey,
       )
 } 

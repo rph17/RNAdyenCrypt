@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNAdyenCrypt"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "RNAdyenCrypt"
   s.description  = <<-DESC
                     RNAdyenCrypt
@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.author             = { "author" => "rph7@live.com" }
   s.platform     = :ios, "10.0"
   s.source       = { :git => "https://github.com/rph17/RNAdyenCrypt.git", :tag => "master" }
-  # s.source_files  = "*.{h,m}"
-  s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.source_files  = "*.{h,m,mm,swift}"
+  # s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.requires_arc = true
 
   s.dependency 'React'
