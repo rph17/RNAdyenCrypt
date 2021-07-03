@@ -32,5 +32,6 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    implementation "com.adyen.checkout:card-ui:3.4.0"
 }
   

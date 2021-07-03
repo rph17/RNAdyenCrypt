@@ -37,9 +37,29 @@
 
 ## Usage
 ```javascript
-import RNAdyenCrypt from 'react-native-adyen-crypt';
+import {AdyenCrypto} from 'react-native-adyen-crypt';
 
 // TODO: What to do with the module?
-RNAdyenCrypt;
+testeCrypto = async () => {
+    const publicKey = '10001|...';
+    const card = {
+        holderName: 'John Doe',
+        number: '4111111111111111',
+        cvc: '737',
+        expiryMonth: '03',
+        expiryYear: '2030',
+      }
+      const token = await AdyenCrypto(card, publicKey);
+      console.log(token);
+}
+
+Results:
+
+{
+    "encryptedExpiryYear": "adyenan0_1_1$iDNIHJMf1/kGBSh1Bjh7...",
+    "encryptedSecurityCode": "adyenan0_1_1$KWs9XGstlNtsfJG7mm...",
+    "encryptedExpiryMonth": "adyenan0_1_1$BWEOk1ItMxmiuaP6R6n...",
+    "encryptedCardNumber": "adyenan0_1_1$S0/6rb3Isq7v5DE0bgT3..."
+}
 ```
   
