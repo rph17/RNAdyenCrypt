@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "10.0"
   s.source       = { :git => "https://github.com/rph17/RNAdyenCrypt.git", :tag => "master" }
   s.source_files  = "*.{h,m,mm,swift}"
-  # s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.requires_arc = true
 
   s.dependency 'React'

@@ -52,9 +52,10 @@ testeCrypto = async () => {
       const token = await AdyenCrypto(card, publicKey);
       console.log(token);
 }
+```
 
-Results:
-
+## Results
+``` results
 {
     "encryptedExpiryYear": "adyenan0_1_1$iDNIHJMf1/kGBSh1Bjh7...",
     "encryptedSecurityCode": "adyenan0_1_1$KWs9XGstlNtsfJG7mm...",
